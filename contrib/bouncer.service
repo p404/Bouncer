@@ -1,0 +1,15 @@
+[Unit]
+Description=Bouncer is a a AWS security group updater, based on github web-hooks CIDRs
+After=syslog.target network.target
+
+[Service]
+Type=simple
+User=root
+Group=root
+ExecStart=/opt/bouncer/bouncer.py -c /etc/bouncer/config.ini
+KillMode=process
+TimeoutSec=10
+Restart=no
+
+[Install]
+WantedBy=multi-user.target
